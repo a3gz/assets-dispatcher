@@ -1,0 +1,1 @@
+console.log('v6');  function myFunction() {     alert('loaded'); }  console.log('calling function'); myFunction(); console.log('done function');
