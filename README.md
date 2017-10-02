@@ -24,4 +24,4 @@ Evidently, Assets Dispatcher isn't the fastest way to serve Javascript/CSS files
 
 An alternative use we can have for **Assets Dispatcher** is that of an automated minifier. Please, take a look at `demo-alt` for details. 
 
-In this setup, instead of using a PHP dispatcher to server the assets, we use it to generate the minified versions of all the resources we want to serve in our pages. In the `demo-alt` we do this via a PHP file that we have to HTTP GET, but in a real situation we would use a cron job instead. 
+In this setup, instead of using a PHP dispatcher to serve the assets, we use it to generate the minified versions of all the resources. In the `demo-alt` we do this via a PHP file that we have to HTTP GET, but in a real situation we would use a cron job instead. 
