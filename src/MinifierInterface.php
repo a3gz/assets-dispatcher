@@ -11,6 +11,14 @@ interface MinifierInterface
      */
     public function run( &$content );
 
+
+    /**
+     * Searches for $fileName in the resources catalog, minifies the content and 
+     * writes the result in the cache. 
+     *
+     * @param string $fileName
+     */
+    public function pipe( $fileName );
 } // interface 
 
 // EOF

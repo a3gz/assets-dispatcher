@@ -32,21 +32,25 @@ abstract class AbstractDispatcher
     /**
      *
      */
-    public function __construct( $file, $catalogBase, $cachedBase )
+    public function __construct( $file, $catalogBase, $cachedBase, $version = null )
     {
         // Take extenstion
         $i = strrpos( $file, '.' );
         $extension = trim(substr( $file, $i ), '.');
         $file = substr( $file, 0, $i );
-        
+
+        $fileName = $file;
+
         // Take version
-        $i = strrpos( $file, '-' );
-        if ( $i !== false ) {
-            $fileName = substr( $file, 0, $i );
-            $version = trim(substr( $file, $i ), '-');
-        } else {
-            $fileName = $file;
-            $version = '0';
+        if ( $version == null ) {
+            $i = strrpos( $file, '-' );
+            if ( $i !== false ) {
+                $fileName = substr( $file, 0, $i );
+                $version = trim(substr( $file, $i ), '-');
+            } else {
+                $fileName = $file;
+                $version = '0';
+            }
         }
         
         $this->fileName = $fileName;
@@ -65,7 +69,7 @@ abstract class AbstractDispatcher
     /**
      *
      */
-    protected function createCache()
+    public function createCache()
     {
         // Make cache 
         $c = file_get_contents( $this->versions->catalog );
@@ -75,7 +79,7 @@ abstract class AbstractDispatcher
 
 
     /**
-     * Dispatches a file 
+     * Dispatches the HTTP-requested file.
      */
     public function dispatch()
     {
@@ -116,7 +120,10 @@ abstract class AbstractDispatcher
 
 
     /**
-     * This method should be overriden 
+     * Takes a string (by refference) and minifies it. 
+     *
+     * @param string &$c String to minify
+     * @return chainable
      */
     public function minify( &$c ) 
     {
