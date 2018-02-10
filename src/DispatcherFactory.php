@@ -40,7 +40,7 @@ class DispatcherFactory
     /**
      *
      */
-     public static function getPipe( $file, $catalogPath, $cachePath, $version )
+     public static function getPipe( $file, $catalogPath, $cachePath, $version = null )
      {
          $types = ['js', 'css'];
 

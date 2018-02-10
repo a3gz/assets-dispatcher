@@ -18,7 +18,7 @@ AssetsDispatcher\DispatcherFactory::getPipe(
     'file.js',                                      // Source file
     dirname(__DIR__).'/demo/resources/catalog/js',  // Source directory
     __DIR__.'/resources/cache/js',                  // Target directory
-    'v8'                                            // New version
+    false                                           // false == keep original name without a version number
 )->createCache();
 
 AssetsDispatcher\DispatcherFactory::getPipe( 

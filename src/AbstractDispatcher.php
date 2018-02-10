@@ -42,7 +42,7 @@ abstract class AbstractDispatcher
         $fileName = $file;
 
         // Take version
-        if ( $version == null ) {
+        if ( $version === null ) {
             $i = strrpos( $file, '-' );
             if ( $i !== false ) {
                 $fileName = substr( $file, 0, $i );
@@ -54,10 +54,16 @@ abstract class AbstractDispatcher
         }
         
         $this->fileName = $fileName;
-        $this->version = $version;
 
         $catalogFile = "{$catalogBase}/{$this->fileName}.{$extension}";
-        $cachedFile = "{$cachedBase}/{$this->fileName}.{$this->version}.{$extension}";
+
+        if ( $version === false ) {
+            // keep original name
+            $cachedFile = "{$cachedBase}/{$this->fileName}.{$extension}";
+        } else {
+            $this->version = $version;
+            $cachedFile = "{$cachedBase}/{$this->fileName}.{$this->version}.{$extension}";
+        }
 
         $this->versions = (object)[
             'catalog' => $catalogFile, 
