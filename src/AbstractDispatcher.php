@@ -72,6 +72,9 @@ abstract class AbstractDispatcher
     public function createCache()
     {
         // Make cache 
+        if ( !is_readable( $this->versions->catalog ) ) {
+            return;
+        }
         $c = file_get_contents( $this->versions->catalog );
         $this->minify( $c );
         file_put_contents( $this->versions->cached, $c );
@@ -89,6 +92,9 @@ abstract class AbstractDispatcher
         }
         if ( $this->noCache ) {
             $version = $this->versions->catalog;
+        }
+        if ( !is_readable( $version) ) {
+            return;
         }
         header("Content-Type: {$this->getContentType()}");
         echo file_get_contents( $version );

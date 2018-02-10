@@ -8,6 +8,7 @@ class DefaultMinifier implements MinifierInterface
      */
     public function run( &$c )
     {
+        $c = preg_replace('#^\s*//.+$#m', "", $c);
         $ptrn1 = <<<'EOS'
 (?sx)
     # quotes

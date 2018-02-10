@@ -1,6 +1,9 @@
 <?php 
 namespace AssetsDispatcher;
 
+use AssetsDispatcher\Dispatchers\JsDispatcher; 
+use AssetsDispatcher\Dispatchers\CssDispatcher; 
+
 class DispatcherFactory 
 {
     /**

@@ -1,5 +1,7 @@
 <?php 
-namespace AssetsDispatcher;
+namespace AssetsDispatcher\Dispatchers;
+
+use AssetsDispatcher\AbstractDispatcher; 
 
 class JsDispatcher extends AbstractDispatcher 
 {
